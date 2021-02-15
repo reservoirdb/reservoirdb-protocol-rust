@@ -1,6 +1,6 @@
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct TableRef {
-	pub schema: String,
+	pub schema: crate::types::SchemaRef,
 	pub name: String,
 }
 
