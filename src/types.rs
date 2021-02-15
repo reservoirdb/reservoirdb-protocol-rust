@@ -65,5 +65,5 @@ pub struct User {
 pub struct Role {
 	pub database_permissions: crate::types::DatabasePermissions,
 	pub global_schema_permissions: crate::types::SchemaPermissions,
-	pub schema_permissions: std::collections::HashMap<String, crate::types::SchemaPermissions>,
+	pub schema_permissions: std::collections::HashMap<crate::types::SchemaRef, crate::types::SchemaPermissions>,
 }
