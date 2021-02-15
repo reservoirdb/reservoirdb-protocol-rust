@@ -22,6 +22,14 @@ pub struct Table {
 	pub columns: Vec<crate::types::Column>,
 }
 
+#[derive(Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize)]
+pub struct SchemaRef(pub String);
+
+#[derive(Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize)]
+pub struct Schema {
+	pub tables: std::collections::HashSet<String>,
+}
+
 bitflags::bitflags! {
 	#[derive(Default, serde::Serialize, serde::Deserialize)]
 	pub struct DatabasePermissions: u32 {
@@ -41,14 +49,10 @@ bitflags::bitflags! {
 }
 
 #[derive(Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize)]
-pub struct UserRef {
-	pub name: String,
-}
+pub struct UserRef(pub String);
 
 #[derive(Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize)]
-pub struct RoleRef {
-	pub name: String,
-}
+pub struct RoleRef(pub String);
 
 #[derive(Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize)]
 pub struct User {
