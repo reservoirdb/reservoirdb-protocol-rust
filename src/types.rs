@@ -8,6 +8,7 @@ pub struct TableRef {
 pub enum ColumnType {
 	Int64,
 	String,
+	Timestamp,
 }
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
