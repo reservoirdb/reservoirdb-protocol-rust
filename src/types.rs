@@ -21,7 +21,7 @@ pub struct Column {
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Table {
 	pub columns: Vec<crate::types::Column>,
-	pub sort_key: String,
+	pub sort_key: Option<String>,
 }
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
