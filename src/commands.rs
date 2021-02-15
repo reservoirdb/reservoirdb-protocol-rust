@@ -23,7 +23,7 @@ pub struct DeleteTable {
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct InsertData {
 	pub table: crate::types::TableRef,
-	pub name: String,
+	pub data_ref: String,
 }
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
