@@ -47,3 +47,27 @@ pub struct AssignUserRoles {
 	pub user: crate::types::UserRef,
 	pub roles: Vec<crate::types::RoleRef>,
 }
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct CreateRole {
+	pub role: crate::types::RoleRef,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct GrantSchemaPermissions {
+	pub role: crate::types::RoleRef,
+	pub schema: crate::types::SchemaRef,
+	pub permissions: crate::types::SchemaPermissions,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct GrantGlobalSchemaPermissions {
+	pub role: crate::types::RoleRef,
+	pub permissions: crate::types::SchemaPermissions,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct GrantDatabasePermissions {
+	pub role: crate::types::RoleRef,
+	pub permissions: crate::types::DatabasePermissions,
+}
