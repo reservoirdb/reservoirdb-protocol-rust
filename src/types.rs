@@ -60,3 +60,10 @@ pub struct RoleRef(pub String);
 pub struct User {
 	pub roles: std::collections::HashSet<crate::types::RoleRef>,
 }
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct Role {
+	pub database_permissions: crate::types::DatabasePermissions,
+	pub global_schema_permissions: crate::types::SchemaPermissions,
+	pub schema_permissions: std::collections::HashMap<String, crate::types::SchemaPermissions>,
+}
