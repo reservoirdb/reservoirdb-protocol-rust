@@ -1,3 +1,4 @@
+
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateTable {
 	pub table: crate::TableRef,
@@ -5,7 +6,11 @@ pub struct CreateTable {
 }
 
 #[typetag::serde]
-impl crate::Command for CreateTable {}
+impl crate::Command for CreateTable {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GetTable {
@@ -13,7 +18,11 @@ pub struct GetTable {
 }
 
 #[typetag::serde]
-impl crate::Command for GetTable {}
+impl crate::Command for GetTable {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AlterTable {
@@ -22,7 +31,11 @@ pub struct AlterTable {
 }
 
 #[typetag::serde]
-impl crate::Command for AlterTable {}
+impl crate::Command for AlterTable {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct DeleteTable {
@@ -30,7 +43,11 @@ pub struct DeleteTable {
 }
 
 #[typetag::serde]
-impl crate::Command for DeleteTable {}
+impl crate::Command for DeleteTable {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct InsertData {
@@ -39,7 +56,11 @@ pub struct InsertData {
 }
 
 #[typetag::serde]
-impl crate::Command for InsertData {}
+impl crate::Command for InsertData {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateSchema {
@@ -47,7 +68,11 @@ pub struct CreateSchema {
 }
 
 #[typetag::serde]
-impl crate::Command for CreateSchema {}
+impl crate::Command for CreateSchema {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateUser {
@@ -56,7 +81,11 @@ pub struct CreateUser {
 }
 
 #[typetag::serde]
-impl crate::Command for CreateUser {}
+impl crate::Command for CreateUser {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GetUser {
@@ -64,7 +93,11 @@ pub struct GetUser {
 }
 
 #[typetag::serde]
-impl crate::Command for GetUser {}
+impl crate::Command for GetUser {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AssignUserRoles {
@@ -73,7 +106,11 @@ pub struct AssignUserRoles {
 }
 
 #[typetag::serde]
-impl crate::Command for AssignUserRoles {}
+impl crate::Command for AssignUserRoles {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateRole {
@@ -81,7 +118,11 @@ pub struct CreateRole {
 }
 
 #[typetag::serde]
-impl crate::Command for CreateRole {}
+impl crate::Command for CreateRole {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantSchemaPermissions {
@@ -91,7 +132,11 @@ pub struct GrantSchemaPermissions {
 }
 
 #[typetag::serde]
-impl crate::Command for GrantSchemaPermissions {}
+impl crate::Command for GrantSchemaPermissions {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantGlobalSchemaPermissions {
@@ -100,7 +145,11 @@ pub struct GrantGlobalSchemaPermissions {
 }
 
 #[typetag::serde]
-impl crate::Command for GrantGlobalSchemaPermissions {}
+impl crate::Command for GrantGlobalSchemaPermissions {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantDatabasePermissions {
@@ -109,4 +158,8 @@ pub struct GrantDatabasePermissions {
 }
 
 #[typetag::serde]
-impl crate::Command for GrantDatabasePermissions {}
+impl crate::Command for GrantDatabasePermissions {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}

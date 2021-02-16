@@ -25,7 +25,11 @@ pub struct Table {
 }
 
 #[typetag::serde]
-impl crate::TxnResult for Table {}
+impl crate::TxnResult for Table {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct SchemaRef(pub String);
@@ -36,7 +40,11 @@ pub struct Schema {
 }
 
 #[typetag::serde]
-impl crate::TxnResult for Schema {}
+impl crate::TxnResult for Schema {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 bitflags::bitflags! {
 	#[derive(Default, serde::Deserialize, serde::Serialize)]
@@ -68,7 +76,11 @@ pub struct User {
 }
 
 #[typetag::serde]
-impl crate::TxnResult for User {}
+impl crate::TxnResult for User {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Role {
@@ -78,4 +90,8 @@ pub struct Role {
 }
 
 #[typetag::serde]
-impl crate::TxnResult for Role {}
+impl crate::TxnResult for Role {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
