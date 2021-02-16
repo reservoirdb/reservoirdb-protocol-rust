@@ -1,33 +1,33 @@
-#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct TableRef {
-	pub schema: crate::types::SchemaRef,
+	pub schema: crate::SchemaRef,
 	pub name: String,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum ColumnType {
 	Int64,
 	String,
 	Timestamp,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Column {
 	pub name: String,
-	pub ty: crate::types::ColumnType,
+	pub ty: crate::ColumnType,
 	pub nullable: bool,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Table {
-	pub columns: Vec<crate::types::Column>,
+	pub columns: Vec<crate::Column>,
 	pub sort_key: Option<String>,
 }
 
-#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct SchemaRef(pub String);
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Schema {
 	pub tables: std::collections::HashSet<String>,
 }
@@ -50,20 +50,20 @@ bitflags::bitflags! {
 	}
 }
 
-#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct UserRef(pub String);
 
-#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct RoleRef(pub String);
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct User {
-	pub roles: std::collections::HashSet<crate::types::RoleRef>,
+	pub roles: std::collections::HashSet<crate::RoleRef>,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Role {
-	pub database_permissions: crate::types::DatabasePermissions,
-	pub global_schema_permissions: crate::types::SchemaPermissions,
-	pub schema_permissions: std::collections::HashMap<crate::types::SchemaRef, crate::types::SchemaPermissions>,
+	pub database_permissions: crate::DatabasePermissions,
+	pub global_schema_permissions: crate::SchemaPermissions,
+	pub schema_permissions: std::collections::HashMap<crate::SchemaRef, crate::SchemaPermissions>,
 }

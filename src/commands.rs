@@ -1,73 +1,112 @@
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateTable {
-	pub table: crate::types::TableRef,
-	pub table_def: crate::types::Table,
+	pub table: crate::TableRef,
+	pub table_def: crate::Table,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for CreateTable {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GetTable {
-	pub table: crate::types::TableRef,
+	pub table: crate::TableRef,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for GetTable {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AlterTable {
-	pub table: crate::types::TableRef,
-	pub new_columns: Vec<crate::types::Column>,
+	pub table: crate::TableRef,
+	pub new_columns: Vec<crate::Column>,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for AlterTable {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct DeleteTable {
-	pub table: crate::types::TableRef,
+	pub table: crate::TableRef,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for DeleteTable {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct InsertData {
-	pub table: crate::types::TableRef,
+	pub table: crate::TableRef,
 	pub data_ref: String,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for InsertData {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateSchema {
-	pub name: crate::types::SchemaRef,
+	pub name: crate::SchemaRef,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for CreateSchema {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateUser {
-	pub user: crate::types::UserRef,
+	pub user: crate::UserRef,
 	pub password: String,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for CreateUser {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GetUser {
-	pub user: crate::types::UserRef,
+	pub user: crate::UserRef,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for GetUser {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AssignUserRoles {
-	pub user: crate::types::UserRef,
-	pub roles: Vec<crate::types::RoleRef>,
+	pub user: crate::UserRef,
+	pub roles: Vec<crate::RoleRef>,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for AssignUserRoles {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateRole {
-	pub role: crate::types::RoleRef,
+	pub role: crate::RoleRef,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for CreateRole {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantSchemaPermissions {
-	pub role: crate::types::RoleRef,
-	pub schema: crate::types::SchemaRef,
-	pub permissions: crate::types::SchemaPermissions,
+	pub role: crate::RoleRef,
+	pub schema: crate::SchemaRef,
+	pub permissions: crate::SchemaPermissions,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for GrantSchemaPermissions {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantGlobalSchemaPermissions {
-	pub role: crate::types::RoleRef,
-	pub permissions: crate::types::SchemaPermissions,
+	pub role: crate::RoleRef,
+	pub permissions: crate::SchemaPermissions,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[typetag::serde]
+impl crate::Command for GrantGlobalSchemaPermissions {}
+
+#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantDatabasePermissions {
-	pub role: crate::types::RoleRef,
-	pub permissions: crate::types::DatabasePermissions,
+	pub role: crate::RoleRef,
+	pub permissions: crate::DatabasePermissions,
 }
+
+#[typetag::serde]
+impl crate::Command for GrantDatabasePermissions {}
