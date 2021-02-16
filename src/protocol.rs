@@ -14,3 +14,13 @@ pub struct AuthLoginRequest {
 pub struct TxnRequest {
 	pub commands: Vec<Box<dyn crate::Command>>,
 }
+
+#[derive(serde::Deserialize, serde::Serialize)]
+pub struct TxnResponse {
+	pub results: Vec<Box<dyn crate::TxnResult>>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct QueryRequest {
+	pub query: String,
+}

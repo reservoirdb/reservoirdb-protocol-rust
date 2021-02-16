@@ -24,6 +24,9 @@ pub struct Table {
 	pub sort_key: Option<String>,
 }
 
+#[typetag::serde]
+impl crate::TxnResult for Table {}
+
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct SchemaRef(pub String);
 
@@ -31,6 +34,9 @@ pub struct SchemaRef(pub String);
 pub struct Schema {
 	pub tables: std::collections::HashSet<String>,
 }
+
+#[typetag::serde]
+impl crate::TxnResult for Schema {}
 
 bitflags::bitflags! {
 	#[derive(Default, serde::Deserialize, serde::Serialize)]
@@ -61,9 +67,15 @@ pub struct User {
 	pub roles: std::collections::HashSet<crate::RoleRef>,
 }
 
+#[typetag::serde]
+impl crate::TxnResult for User {}
+
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Role {
 	pub database_permissions: crate::DatabasePermissions,
 	pub global_schema_permissions: crate::SchemaPermissions,
 	pub schema_permissions: std::collections::HashMap<crate::SchemaRef, crate::SchemaPermissions>,
 }
+
+#[typetag::serde]
+impl crate::TxnResult for Role {}

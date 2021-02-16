@@ -6,3 +6,6 @@ pub use types::*;
 
 #[typetag::serde(tag = "type")]
 pub trait Command: 'static {}
+
+#[typetag::serde(tag = "type")]
+pub trait TxnResult: 'static {}
