@@ -1,4 +1,4 @@
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateTable {
 	pub table: crate::TableRef,
 	pub table_def: crate::Table,
@@ -7,7 +7,7 @@ pub struct CreateTable {
 #[typetag::serde]
 impl crate::Command for CreateTable {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GetTable {
 	pub table: crate::TableRef,
 }
@@ -15,7 +15,7 @@ pub struct GetTable {
 #[typetag::serde]
 impl crate::Command for GetTable {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AlterTable {
 	pub table: crate::TableRef,
 	pub new_columns: Vec<crate::Column>,
@@ -24,7 +24,7 @@ pub struct AlterTable {
 #[typetag::serde]
 impl crate::Command for AlterTable {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct DeleteTable {
 	pub table: crate::TableRef,
 }
@@ -32,7 +32,7 @@ pub struct DeleteTable {
 #[typetag::serde]
 impl crate::Command for DeleteTable {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct InsertData {
 	pub table: crate::TableRef,
 	pub data_ref: String,
@@ -41,7 +41,7 @@ pub struct InsertData {
 #[typetag::serde]
 impl crate::Command for InsertData {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateSchema {
 	pub name: crate::SchemaRef,
 }
@@ -49,7 +49,7 @@ pub struct CreateSchema {
 #[typetag::serde]
 impl crate::Command for CreateSchema {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateUser {
 	pub user: crate::UserRef,
 	pub password: String,
@@ -58,7 +58,7 @@ pub struct CreateUser {
 #[typetag::serde]
 impl crate::Command for CreateUser {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GetUser {
 	pub user: crate::UserRef,
 }
@@ -66,7 +66,7 @@ pub struct GetUser {
 #[typetag::serde]
 impl crate::Command for GetUser {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AssignUserRoles {
 	pub user: crate::UserRef,
 	pub roles: Vec<crate::RoleRef>,
@@ -75,7 +75,7 @@ pub struct AssignUserRoles {
 #[typetag::serde]
 impl crate::Command for AssignUserRoles {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateRole {
 	pub role: crate::RoleRef,
 }
@@ -83,7 +83,7 @@ pub struct CreateRole {
 #[typetag::serde]
 impl crate::Command for CreateRole {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantSchemaPermissions {
 	pub role: crate::RoleRef,
 	pub schema: crate::SchemaRef,
@@ -93,7 +93,7 @@ pub struct GrantSchemaPermissions {
 #[typetag::serde]
 impl crate::Command for GrantSchemaPermissions {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantGlobalSchemaPermissions {
 	pub role: crate::RoleRef,
 	pub permissions: crate::SchemaPermissions,
@@ -102,7 +102,7 @@ pub struct GrantGlobalSchemaPermissions {
 #[typetag::serde]
 impl crate::Command for GrantGlobalSchemaPermissions {}
 
-#[derive(Clone, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantDatabasePermissions {
 	pub role: crate::RoleRef,
 	pub permissions: crate::DatabasePermissions,
