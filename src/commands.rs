@@ -152,6 +152,33 @@ impl crate::Command for GrantGlobalSchemaPermissions {
 }
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct GrantComputeClusterPermissions {
+	pub role: crate::RoleRef,
+	pub compute_cluster: crate::ComputeClusterRef,
+	pub permissions: crate::ComputeClusterPermissions,
+}
+
+#[typetag::serde]
+impl crate::Command for GrantComputeClusterPermissions {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct GrantGlobalComputeClusterPermissions {
+	pub role: crate::RoleRef,
+	pub permissions: crate::ComputeClusterPermissions,
+}
+
+#[typetag::serde]
+impl crate::Command for GrantGlobalComputeClusterPermissions {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct GrantDatabasePermissions {
 	pub role: crate::RoleRef,
 	pub permissions: crate::DatabasePermissions,
@@ -159,6 +186,30 @@ pub struct GrantDatabasePermissions {
 
 #[typetag::serde]
 impl crate::Command for GrantDatabasePermissions {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct CreateComputeCluster {
+	pub name: crate::ComputeClusterRef,
+}
+
+#[typetag::serde]
+impl crate::Command for CreateComputeCluster {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct DeleteComputeCluster {
+	pub name: crate::ComputeClusterRef,
+}
+
+#[typetag::serde]
+impl crate::Command for DeleteComputeCluster {
 	fn as_any(&self) -> &dyn std::any::Any {
 		self
 	}

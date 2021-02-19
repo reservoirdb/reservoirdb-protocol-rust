@@ -50,7 +50,7 @@ bitflags::bitflags! {
 	#[derive(Default, serde::Deserialize, serde::Serialize)]
 	pub struct DatabasePermissions: u32 {
 		const NONE = 0;
-		const MANAGE_ROLES = 1; const MANAGE_SCHEMAS = 2;
+		const MANAGE_ROLES = 1; const MANAGE_SCHEMAS = 2; const MANAGE_COMPUTE_CLUSTERS = 4;
 		const ALL = u32::MAX;
 	}
 }
@@ -60,6 +60,15 @@ bitflags::bitflags! {
 	pub struct SchemaPermissions: u32 {
 		const NONE = 0;
 		const MANAGE_ACCESS = 1; const MANAGE_TABLES = 2; const WRITE_TABLE = 4; const READ_TABLE = 8;
+		const ALL = u32::MAX;
+	}
+}
+
+bitflags::bitflags! {
+	#[derive(Default, serde::Deserialize, serde::Serialize)]
+	pub struct ComputeClusterPermissions: u32 {
+		const NONE = 0;
+		const USE = 1;
 		const ALL = u32::MAX;
 	}
 }
@@ -87,10 +96,26 @@ pub struct Role {
 	pub database_permissions: crate::DatabasePermissions,
 	pub global_schema_permissions: crate::SchemaPermissions,
 	pub schema_permissions: std::collections::HashMap<crate::SchemaRef, crate::SchemaPermissions>,
+	pub global_compute_cluster_permissions: crate::ComputeClusterPermissions,
+	pub compute_cluster_permissions:
+		std::collections::HashMap<crate::ComputeClusterRef, crate::ComputeClusterPermissions>,
 }
 
 #[typetag::serde]
 impl crate::TxnResult for Role {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct ComputeClusterRef(pub String);
+
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct ComputeCluster {}
+
+#[typetag::serde]
+impl crate::TxnResult for ComputeCluster {
 	fn as_any(&self) -> &dyn std::any::Any {
 		self
 	}
