@@ -96,9 +96,11 @@ pub struct Role {
 	pub database_permissions: crate::DatabasePermissions,
 	pub global_schema_permissions: crate::SchemaPermissions,
 	pub schema_permissions: std::collections::HashMap<crate::SchemaRef, crate::SchemaPermissions>,
-	pub global_compute_cluster_permissions: Option<crate::ComputeClusterPermissions>,
+	#[serde(default)]
+	pub global_compute_cluster_permissions: crate::ComputeClusterPermissions,
+	#[serde(default)]
 	pub compute_cluster_permissions:
-		Option<std::collections::HashMap<crate::ComputeClusterRef, crate::ComputeClusterPermissions>>,
+		std::collections::HashMap<crate::ComputeClusterRef, crate::ComputeClusterPermissions>,
 }
 
 #[typetag::serde]
