@@ -63,7 +63,7 @@ pub struct TxnRequest {
 
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct TxnResponse {
-	pub results: Vec<Box<dyn TxnResult>>,
+	pub results: Vec<Option<Box<dyn TxnResult>>>,
 }
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
