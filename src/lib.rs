@@ -54,6 +54,7 @@ pub struct AuthLoginRequest {
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AuthLoginResponse {
+	#[serde(default)]
 	pub token: String,
 }
 
@@ -224,6 +225,7 @@ pub struct RoleRef(pub String);
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct User {
+	#[serde(default)]
 	pub roles: std::collections::HashSet<RoleRef>,
 }
 
@@ -236,10 +238,15 @@ impl TxnResult for User {
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Role {
+	#[serde(default)]
 	pub database_permissions: DatabasePermissions,
+	#[serde(default)]
 	pub global_schema_permissions: SchemaPermissions,
+	#[serde(default)]
 	pub schema_permissions: std::collections::HashMap<SchemaRef, SchemaPermissions>,
+	#[serde(default)]
 	pub global_compute_cluster_permissions: ComputeClusterPermissions,
+	#[serde(default)]
 	pub compute_cluster_permissions: std::collections::HashMap<ComputeClusterRef, ComputeClusterPermissions>,
 }
 
@@ -305,6 +312,7 @@ impl Command for GetTable {
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AlterTable {
 	pub table: TableRef,
+	#[serde(default)]
 	pub new_columns: Vec<Column>,
 }
 
