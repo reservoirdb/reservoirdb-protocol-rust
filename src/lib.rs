@@ -250,7 +250,7 @@ impl TxnResult for Role {
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateSchema {
-	pub table: SchemaRef,
+	pub name: SchemaRef,
 }
 
 #[typetag::serde]
