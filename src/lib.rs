@@ -74,6 +74,7 @@ pub struct QueryRequest {
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateUser {
 	pub user: UserRef,
+	pub password: String,
 }
 
 #[typetag::serde]
