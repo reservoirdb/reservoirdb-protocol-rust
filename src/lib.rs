@@ -47,6 +47,7 @@ pub trait Command: 'static {
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AuthLoginRequest {
+	pub account: String,
 	pub user: UserRef,
 	pub password: String,
 }
