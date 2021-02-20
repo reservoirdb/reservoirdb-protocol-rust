@@ -360,7 +360,7 @@ pub struct Column {
 
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Table {
-	pub columns: Vec<ColumnType>,
+	pub columns: Vec<Column>,
 	pub sort_key: Option<String>,
 }
 
