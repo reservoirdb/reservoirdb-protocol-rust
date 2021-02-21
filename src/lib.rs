@@ -48,7 +48,7 @@ impl TxnResult for ComputeCluster {
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct UIState {
 	#[serde(default)]
-	pub tables: std::collections::HashMap<TableRef, Table>,
+	pub tables: std::collections::HashMap<String, Table>,
 	#[serde(default)]
 	pub schemas: std::collections::HashMap<SchemaRef, Schema>,
 	#[serde(default)]
