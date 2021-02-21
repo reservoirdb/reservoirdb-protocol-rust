@@ -45,6 +45,35 @@ impl TxnResult for ComputeCluster {
 	}
 }
 
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct UIState {
+	#[serde(default)]
+	pub tables: std::collections::HashMap<TableRef, Table>,
+	#[serde(default)]
+	pub schemas: std::collections::HashMap<SchemaRef, Schema>,
+	#[serde(default)]
+	pub users: std::collections::HashMap<UserRef, User>,
+	#[serde(default)]
+	pub roles: std::collections::HashMap<RoleRef, Role>,
+}
+
+#[typetag::serde]
+impl TxnResult for UIState {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct UIGetState {}
+
+#[typetag::serde]
+impl Command for UIGetState {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AuthLoginRequest {
 	pub account: String,
