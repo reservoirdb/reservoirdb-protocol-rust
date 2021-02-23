@@ -244,7 +244,7 @@ impl Command for GrantDatabasePermissions {
 }
 
 bitflags::bitflags! {
-	#[derive(Default, serde::Deserialize, serde::Serialize)]
+	#[derive(Default)]
 	pub struct DatabasePermissions: u32 {
 		const NONE = 0;
 		const MANAGE_ROLES = 1 << 0; const MANAGE_SCHEMAS = 1 << 1; const MANAGE_COMPUTE_CLUSTERS = 1 << 2;
@@ -252,8 +252,10 @@ bitflags::bitflags! {
 	}
 }
 
+bitflags_serde_shim::impl_serde_for_bitflags!(DatabasePermissions);
+
 bitflags::bitflags! {
-	#[derive(Default, serde::Deserialize, serde::Serialize)]
+	#[derive(Default)]
 	pub struct SchemaPermissions: u32 {
 		const NONE = 0;
 		const MANAGE_ACCESS = 1 << 0; const MANAGE_TABLES = 1 << 1; const WRITE_TABLE = 1 << 2; const READ_TABLE = 1 << 3;
@@ -261,14 +263,18 @@ bitflags::bitflags! {
 	}
 }
 
+bitflags_serde_shim::impl_serde_for_bitflags!(SchemaPermissions);
+
 bitflags::bitflags! {
-	#[derive(Default, serde::Deserialize, serde::Serialize)]
+	#[derive(Default)]
 	pub struct ComputeClusterPermissions: u32 {
 		const NONE = 0;
 		const USE = 1 << 0;
 		const ALL = u32::MAX;
 	}
 }
+
+bitflags_serde_shim::impl_serde_for_bitflags!(ComputeClusterPermissions);
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct UserRef(pub String);
