@@ -127,6 +127,18 @@ impl Command for GetUser {
 	}
 }
 
+#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct DeleteUser {
+	pub user: UserRef,
+}
+
+#[typetag::serde]
+impl Command for DeleteUser {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
 #[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct AssignUserRoles {
 	pub user: UserRef,
@@ -147,6 +159,18 @@ pub struct CreateRole {
 
 #[typetag::serde]
 impl Command for CreateRole {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct DeleteRole {
+	pub role: RoleRef,
+}
+
+#[typetag::serde]
+impl Command for DeleteRole {
 	fn as_any(&self) -> &dyn std::any::Any {
 		self
 	}
@@ -293,6 +317,18 @@ pub struct CreateSchema {
 
 #[typetag::serde]
 impl Command for CreateSchema {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct DeleteSchema {
+	pub name: SchemaRef,
+}
+
+#[typetag::serde]
+impl Command for DeleteSchema {
 	fn as_any(&self) -> &dyn std::any::Any {
 		self
 	}
