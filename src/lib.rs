@@ -1,9 +1,9 @@
-#[typetag::serde(tag = "type", content = "data")]
+#[typetag::serde(tag = "type")]
 pub trait TxnResult: 'static {
 	fn as_any(&self) -> &dyn std::any::Any;
 }
 
-#[typetag::serde(tag = "type", content = "params")]
+#[typetag::serde(tag = "type")]
 pub trait Command: 'static {
 	fn as_any(&self) -> &dyn std::any::Any;
 }
