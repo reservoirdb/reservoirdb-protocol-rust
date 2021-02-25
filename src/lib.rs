@@ -1,13 +1,3 @@
-#[typetag::serde(tag = "type")]
-pub trait TxnResult: 'static {
-	fn as_any(&self) -> &dyn std::any::Any;
-}
-
-#[typetag::serde(tag = "type")]
-pub trait Command: 'static {
-	fn as_any(&self) -> &dyn std::any::Any;
-}
-
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct CreateComputeCluster {
 	pub name: ComputeClusterRef,
@@ -450,4 +440,14 @@ impl TxnResult for Table {
 	fn as_any(&self) -> &dyn std::any::Any {
 		self
 	}
+}
+
+#[typetag::serde(tag = "type")]
+pub trait TxnResult: 'static {
+	fn as_any(&self) -> &dyn std::any::Any;
+}
+
+#[typetag::serde(tag = "type")]
+pub trait Command: 'static {
+	fn as_any(&self) -> &dyn std::any::Any;
 }
