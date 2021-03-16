@@ -23,10 +23,44 @@ impl Command for DeleteComputeCluster {
 }
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct ActivateComputeCluster {
+	pub name: ComputeClusterRef,
+}
+
+#[typetag::serde]
+impl Command for ActivateComputeCluster {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct DeactivateComputeCluster {
+	pub name: ComputeClusterRef,
+}
+
+#[typetag::serde]
+impl Command for DeactivateComputeCluster {
+	fn as_any(&self) -> &dyn std::any::Any {
+		self
+	}
+}
+
+#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct ComputeClusterRef(pub String);
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-pub struct ComputeCluster {}
+pub enum ComputeClusterState {
+	Activating,
+	Active,
+	Deactivating,
+	Inactive,
+}
+
+#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct ComputeCluster {
+	pub state: ComputeClusterState,
+}
 
 #[typetag::serde]
 impl TxnResult for ComputeCluster {
