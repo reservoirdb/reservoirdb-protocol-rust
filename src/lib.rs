@@ -477,11 +477,11 @@ impl TxnResult for Table {
 }
 
 #[typetag::serde(tag = "type")]
-pub trait TxnResult: 'static {
+pub trait TxnResult: 'static + Send {
 	fn as_any(&self) -> &dyn std::any::Any;
 }
 
 #[typetag::serde(tag = "type")]
-pub trait Command: 'static {
+pub trait Command: 'static + Send {
 	fn as_any(&self) -> &dyn std::any::Any;
 }
