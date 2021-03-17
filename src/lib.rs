@@ -114,6 +114,8 @@ pub struct AuthLoginResponse {
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct TxnRequest {
 	pub commands: Vec<Box<dyn Command>>,
+	#[serde(default)]
+	pub run_on: Option<ComputeClusterRef>,
 }
 
 #[derive(serde::Deserialize, serde::Serialize)]
@@ -124,6 +126,8 @@ pub struct TxnResponse {
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct QueryRequest {
 	pub query: String,
+	#[serde(default)]
+	pub run_on: Option<ComputeClusterRef>,
 }
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
