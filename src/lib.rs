@@ -124,10 +124,20 @@ pub struct TxnResponse {
 }
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct CatalogContext {
+	#[serde(default)]
+	pub default_catalog: Option<String>,
+	#[serde(default)]
+	pub default_schema: Option<String>,
+}
+
+#[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct QueryRequest {
 	pub query: String,
 	#[serde(default)]
 	pub run_on: Option<ComputeClusterRef>,
+	#[serde(default)]
+	pub catalog_context: Option<CatalogContext>,
 }
 
 #[derive(Clone, Debug, Eq, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
